@@ -1059,3 +1059,10 @@ void write_index_binary(const IndexBinary* idx, const char* fname) {
 }
 
 } // namespace faiss
+
+// Explicit template instantiations
+#include <faiss/IndexIDMap.h>
+namespace faiss {
+template class IndexIDMapTemplate<Index>;
+template class IndexIDMapTemplate<IndexBinary>;
+}

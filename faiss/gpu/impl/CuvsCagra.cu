@@ -6,7 +6,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 /*
- * Copyright (c) 2024-2025, NVIDIA CORPORATION.
+ * Copyright (c) 2024, NVIDIA CORPORATION.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,8 +48,7 @@ CuvsCagra::CuvsCagra(
         std::optional<cuvs::neighbors::ivf_pq::index_params> ivf_pq_params,
         std::optional<cuvs::neighbors::ivf_pq::search_params>
                 ivf_pq_search_params,
-        float refine_rate,
-        bool guarantee_connectivity)
+        float refine_rate)
         : resources_(resources),
           dim_(dim),
           graph_build_algo_(graph_build_algo),
@@ -60,8 +59,7 @@ CuvsCagra::CuvsCagra(
           index_params_(),
           ivf_pq_params_(ivf_pq_params),
           ivf_pq_search_params_(ivf_pq_search_params),
-          refine_rate_(refine_rate),
-          guarantee_connectivity_(guarantee_connectivity) {
+          refine_rate_(refine_rate) {
     FAISS_THROW_IF_NOT_MSG(
             metric == faiss::METRIC_L2 || metric == faiss::METRIC_INNER_PRODUCT,
             "CAGRA currently only supports L2 or Inner Product metric.");
@@ -72,7 +70,6 @@ CuvsCagra::CuvsCagra(
     index_params_.intermediate_graph_degree = intermediate_graph_degree;
     index_params_.graph_degree = graph_degree;
     index_params_.attach_dataset_on_build = store_dataset;
-    index_params_.guarantee_connectivity = guarantee_connectivity;
 
     if (!ivf_pq_search_params_) {
         ivf_pq_search_params_ =

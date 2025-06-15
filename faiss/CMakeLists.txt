@@ -19,7 +19,7 @@ set(FAISS_SRC
   IndexFlat.cpp
   IndexFlatCodes.cpp
   IndexHNSW.cpp
-  IndexIDMap.cpp
+  IndexHNSWMaxSim.cpp
   IndexIVF.cpp
   IndexIVFAdditiveQuantizer.cpp
   IndexIVFFlat.cpp
@@ -87,6 +87,7 @@ set(FAISS_SRC
   utils/NeuralNet.cpp
   utils/WorkerThread.cpp
   utils/distances.cpp
+  utils/distances_maxsim.cpp
   utils/distances_simd.cpp
   utils/extra_distances.cpp
   utils/hamming.cpp
@@ -116,6 +117,7 @@ set(FAISS_HEADERS
   IndexFlat.h
   IndexFlatCodes.h
   IndexHNSW.h
+  IndexHNSWMaxSim.h
   IndexIDMap.h
   IndexIVF.h
   IndexIVFAdditiveQuantizer.h
@@ -202,6 +204,7 @@ set(FAISS_HEADERS
   utils/NeuralNet.h
   utils/WorkerThread.h
   utils/distances.h
+  utils/distances_maxsim.h
   utils/extra_distances-inl.h
   utils/extra_distances.h
   utils/fp16-fp16c.h
